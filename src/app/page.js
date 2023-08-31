@@ -72,7 +72,7 @@ const schema = z
 
   .refine(
     (data) => {
-      if (data.confirmPassword == data.password) return true;
+      if (data.confirmPassword === data.password) return true;
       return false;
     },
     { message: "Password does not match", path: ["confirmPassword"] }
@@ -108,7 +108,7 @@ export default function Home() {
     if (form.values.plan === "full") price = 1500;
     //check the rest plans by yourself
     //TIP : check /src/app/libs/runningPlans.js
-    if (form.values.coupon === "CMU2023") {
+    if (form.values.hasCoupon && form.values.coupon === "CMU2023") {
       price *= 0.7;
     }
 
